@@ -1,0 +1,10 @@
+location / {
+    root /app/dist;
+    index index.html;
+    # Manage route with vue
+    try_files $uri $uri.html $uri/ /index.html;
+    # Add security header
+    add_header Content-Security-Policy "<%= ENV['MAIN_CSP'] %>";
+    add_header X-Frame-Options "deny";
+    add_header X-Content-Type-Options "nosniff";
+}
